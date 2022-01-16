@@ -3,6 +3,8 @@ package com.example;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+import org.ejml.interfaces.decomposition.EigenDecomposition;
 import org.ejml.simple.SimpleMatrix;
 import org.ejml.simple.SimpleSVD;
 
@@ -36,6 +38,7 @@ public class Ellipse {
     public ArrayList<Double> x_coords = new ArrayList<Double>();
     public ArrayList<Double> y_coords = new ArrayList<Double>();
 
+    
     public static double[] fit_ellipse(double[][] points) {
         final int nPoints = points.length;
         double[] centroid = Centroid.getCentroid(points);
@@ -97,7 +100,7 @@ public class Ellipse {
         return matrix2Array1D(A);
     }
 
-    public static double[] cart_to_polar(double[] coefficients) throws Exception {
+    public static double[] cart_to_polar(double[] coefficients) {
         // We use the
         // formulas from https://mathworld.wolfram.com/Ellipse.html // which
         // assumes a cartesian form ax^2 + 2bxy + cy^2 + 2dx + 2ey + f = 0.
@@ -143,8 +146,9 @@ public class Ellipse {
             {-.81, 1.4},
             {-1.16,1.242},
         };
-        System.out.println(Arrays.toString(fit_ellipse(points)));
-        System.out.println(Arrays.toString(cart_to_polar(fit_ellipse(points))));
+        //System.out.println(Arrays.toString(taubin(points)));
+        //System.out.println(Arrays.toString(fit_ellipse(points)));
+        //System.out.println(Arrays.toString(cart_to_polar(fit_ellipse(points))));
         //System.out.println(Arrays.toString(cart_to_polar(coefficients)));
     }
 }
