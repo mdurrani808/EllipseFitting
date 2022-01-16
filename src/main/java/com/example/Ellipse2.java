@@ -18,6 +18,25 @@ public class Ellipse2 {
         }
         return obs;
     }
+    public static double[] getXArray1D(double[][] points)
+    {
+        double xArray[] = new double[points.length];
+        for(int i = 0; i<points.length; i++)
+        {
+            xArray[i] = points[i][0];
+        }
+        return xArray;
+    }
+    public static double[] getYArray1D(double[][] points)
+    {
+        double yArray[] = new double[points.length];
+        for(int i = 0; i<points.length; i++)
+        {
+            yArray[i] = points[i][1];
+        }
+        return yArray;
+    }
+
     public static void main(String args[])
     {
         FitEllipseAlgebraic_F64 ellipse = new FitEllipseAlgebraic_F64();
@@ -31,9 +50,9 @@ public class Ellipse2 {
             {-.81, 1.4},
             {-1.16,1.242},
         };
-        double newPoints[][] = Regression.append(Regression.generatePointsFromRegression(points, 10000), points);
+        double newPoints[][] = Regression.append(Regression.generatePointsFromRegression(points, 25), points);
 
-        if(ellipse.process(convertToPoint2D(points)))
+        if(ellipse.process(convertToPoint2D(newPoints)))
         {
             System.out.println(ellipse.getEllipse().toString());
         }
